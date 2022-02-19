@@ -1,10 +1,104 @@
+@use 'vars' as *;
+
 .MenuBar {
   display: flex;
   flex-direction: column;
-  padding: 10px 0 0;
+  // padding: 10px 0 0;
   align-items: center;
-  width: 80px;
-  & > figure > img {
+  width: 400px;
+
+  & > li:nth-child(1) {
+    margin-top: 20px;
+  }
+
+  & > li:nth-child(1) > button {
+    display: inline;
+    width: 100%;
+  }
+
+  & > li > button {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 50px;
+  }
+  & > li:nth-child(2) > button:hover,
+  & > li:nth-child(3) > button:hover {
+    background: $sc_gray;
+  }
+
+  & > li > button > img {
     width: 60px;
+  }
+
+  & > li > button > span {
+    margin-left: 10px;
+    display: inline;
+    font-size: 18px;
+  }
+
+  & > li {
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  @media (max-width: 1300px) {
+    width: 80px;
+    & > li > button {
+      justify-content: center;
+      padding: 15px 5px;
+    }
+    & > li > button > span {
+      display: none;
+    }
+  }
+  @media (max-width: 500px) {
+    flex-direction: row;
+    background: white;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    & > li {
+      margin: 0;
+    }
+    & > li:nth-child(1) {
+      display: none;
+    }
+  }
+}
+
+.MenuBar__NewPost.MenuBar__NewPost {
+  background: $pr_blue;
+  color: white;
+  font-size: 16px;
+  border-radius: 50px;
+  padding: 15px;
+  justify-content: center;
+  transition: transform 0.3s linear;
+  border: 2px solid transparent;
+  @media (max-width: 1300px) {
+    padding: 12px 15px;
+  }
+  @media (max-width: 500px) {
+    width: 63px;
+  }
+}
+
+.MenuBar__NewPost.MenuBar__NewPost:hover {
+  background: transparent;
+  color: $pr_blue;
+  font-weight: bold;
+  border: 2px solid $pr_blue;
+}
+
+.MenuBar__PostFeather {
+  display: none;
+  @media (max-width: 1300px) {
+    display: block;
+    width: auto;
   }
 }

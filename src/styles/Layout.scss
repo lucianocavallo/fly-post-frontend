@@ -1,12 +1,9 @@
 .Layout {
+  position: relative;
   display: flex;
-  max-width: 1200px;
+  max-width: 1000px;
   min-height: 100vh;
   margin: 0 auto;
-  background: gray;
-  @media (max-width: 1250px) {
-    max-width: 1000px;
-  }
   @media (max-width: 1000px) {
     max-width: 650px;
   }
