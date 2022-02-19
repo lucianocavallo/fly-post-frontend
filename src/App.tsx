@@ -7,7 +7,7 @@ import { NotRegistered } from './pages/NotRegistered';
 import './styles/global.scss';
 
 export const App = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
 
   return (
     <BrowserRouter>

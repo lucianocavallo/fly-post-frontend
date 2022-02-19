@@ -1,6 +1,7 @@
 @use 'vars' as *;
 
 .NotRegistered {
+  position: relative;
   display: flex;
   min-height: 100vh;
   justify-content: flex-end;

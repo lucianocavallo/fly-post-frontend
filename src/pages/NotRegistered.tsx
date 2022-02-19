@@ -1,8 +1,12 @@
+import { useState } from 'react';
+import { FormModal } from '../components/FormModal';
 import logo from '../assets/logo.svg';
 
 import '../styles/NotRegistered.scss';
 
 export const NotRegistered: React.FC = () => {
+  const [showModal, setShowModal] = useState('');
+
   return (
     <div className="NotRegistered">
       <div className="NotRegistered__Welcome">
@@ -18,11 +22,12 @@ export const NotRegistered: React.FC = () => {
           </h2>
           <h3>A micro-twitter app, join now</h3>
           <div className="NotRegistered__Buttons">
-            <button>Signup</button>
-            <button>Login</button>
+            <button onClick={() => setShowModal('signup')}>Signup</button>
+            <button onClick={() => setShowModal('login')}>Login</button>
           </div>
         </div>
       </div>
+      {showModal && <FormModal modal={showModal} setModal={setShowModal} />}
     </div>
   );
 };

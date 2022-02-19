@@ -1,0 +1,87 @@
+@use 'vars' as *;
+
+.FormModal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: grid;
+  place-items: center;
+}
+
+.FormModal {
+  position: relative;
+  width: 500px;
+  height: 600px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  // place-items: center;
+  place-content: center;
+
+  & label {
+    font-size: 18px;
+    color: $ft_gray;
+    margin-bottom: 10px;
+  }
+
+  & input {
+    padding: 0 10px;
+    width: 300px;
+    height: 35px;
+    border-radius: 12px;
+    // border: 1px solid $pr_blue;
+    box-shadow: 0 0 1px 1px $pr_blue;
+    margin-bottom: 10px;
+    outline: none;
+  }
+
+  & input:focus {
+    outline: 2px solid $pr_blue;
+  }
+
+  & button:last-child {
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    max-width: 380px;
+    margin-top: 10px;
+    background: $pr_blue;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  & form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 650px) {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+.FormModal__close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.FormModal__logo {
+  position: absolute;
+  width: 50px;
+  top: 15px;
+  left: calc(50% - 25px);
+}
