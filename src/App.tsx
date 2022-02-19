@@ -1,6 +1,8 @@
+import './styles/global.scss';
+
 const App = () => {
   return (
-    <div>
+    <div className="App">
       <h1>Hola</h1>
     </div>
   );
