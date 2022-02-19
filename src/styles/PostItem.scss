@@ -1,0 +1,31 @@
+@use 'vars' as *;
+
+.PostItem {
+  padding: 10px;
+}
+
+.PostItem__User {
+  margin-bottom: 8px;
+  & > span:first-child {
+    font-weight: bold;
+  }
+  & > span:nth-child(2) {
+    font-style: italic;
+    color: $tr_gray;
+  }
+}
+
+.PostItem__FavBar {
+  display: flex;
+  margin-top: 10px;
+
+  & > li {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+  }
+
+  & > li > span {
+    margin-left: 5px;
+  }
+}
