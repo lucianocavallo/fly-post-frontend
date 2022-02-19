@@ -1,7 +1,12 @@
+import { Layout } from '../components/Layout';
+import { PostList } from '../components/PostList';
+import { MenuBar } from '../components/MenuBar';
+
 export const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <Layout>
+      <MenuBar />
+      <PostList />
+    </Layout>
   );
 };

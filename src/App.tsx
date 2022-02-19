@@ -4,7 +4,7 @@ import { Home } from './pages/Home';
 
 import './styles/global.scss';
 
-const App = () => {
+export const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -13,5 +13,3 @@ const App = () => {
     </BrowserRouter>
   );
 };
-
-export default App;

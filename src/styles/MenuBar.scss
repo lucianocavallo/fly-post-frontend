@@ -1,0 +1,10 @@
+.MenuBar {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 0;
+  align-items: center;
+  width: 80px;
+  & > figure > img {
+    width: 60px;
+  }
+}

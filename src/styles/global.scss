@@ -1,7 +1,13 @@
+@use 'vars' as *;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: $font;
 }
 
 ul {
@@ -10,11 +16,9 @@ ul {
 
 button {
   background: transparent;
+  font-family: $font;
 }
 
 a {
   text-decoration: none;
-}
-.App {
-  background: yellow;
 }
