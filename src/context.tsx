@@ -34,6 +34,7 @@ type ContextProps = {
         id: string;
         username: string;
         token: string;
+        email: string;
       }
     | undefined;
   addUser: () => void;

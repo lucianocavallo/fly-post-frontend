@@ -12,6 +12,8 @@
   "author": "Luciano Cavallo <lucianocavallo@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@apollo/client": "^3.5.9",
+    "graphql": "^16.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
@@ -30,6 +32,7 @@
     "@typescript-eslint/parser": "^5.12.0",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.6.0",
+    "dotenv-webpack": "^7.1.0",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",

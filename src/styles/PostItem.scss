@@ -17,7 +17,7 @@
 
 .PostItem__FavBar {
   display: flex;
-  margin-top: 10px;
+  margin-top: 15px;
 
   & > li {
     display: flex;
@@ -28,4 +28,8 @@
   & > li > span {
     margin-left: 5px;
   }
+}
+
+.PostItem__Body {
+  width: 100%;
 }

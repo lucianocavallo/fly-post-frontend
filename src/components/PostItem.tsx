@@ -4,16 +4,12 @@ import { FaRegHeart, FaHeart, FaCommentDots } from 'react-icons/fa';
 
 import '../styles/PostItem.scss';
 
-export const PostItem: React.FC<PostItemProps> = ({
-  username,
-  body,
-  createdAt,
-}) => {
+export const PostItem: React.FC<PostItemProps> = ({ user, body }) => {
   return (
     <div className="PostItem">
       <div className="PostItem__User">
-        <span>{username}</span>
-        <span>&nbsp;&nbsp;{dateConverter(createdAt)}</span>
+        <span>{user.username}</span>
+        <span>&nbsp;&nbsp;27-02-2022{/*dateConverter(createdAt)*/}</span>
       </div>
       <div className="PostItem__Body">
         <p>{body}</p>
@@ -21,7 +17,7 @@ export const PostItem: React.FC<PostItemProps> = ({
       <ul className="PostItem__FavBar">
         <li>
           <button>
-            <FaRegHeart size={25} />
+            <FaRegHeart size={25} color="#ff5555" />
           </button>
           <span>25 likes</span>
         </li>
@@ -37,7 +33,7 @@ export const PostItem: React.FC<PostItemProps> = ({
 };
 
 type PostItemProps = {
-  username: string;
+  user: { username: string };
   body: string;
   createdAt: string;
 };
