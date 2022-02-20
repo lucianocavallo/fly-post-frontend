@@ -1,10 +1,21 @@
+import type { Comment } from './CommentItem';
 import { dateConverter } from '../utils/dateConverter';
 
-import { FaRegHeart, FaHeart, FaCommentDots } from 'react-icons/fa';
+import { FaRegHeart, FaHeart, FaRegComments } from 'react-icons/fa';
+
+import { CommentsList } from './CommentsList';
 
 import '../styles/PostItem.scss';
+import { useState } from 'react';
 
-export const PostItem: React.FC<PostItemProps> = ({ user, body }) => {
+export const PostItem: React.FC<PostItemProps> = ({
+  user,
+  body,
+  comments,
+  usersLikes,
+}) => {
+  const [showComments, setShowComments] = useState(false);
+
   return (
     <div className="PostItem">
       <div className="PostItem__User">
@@ -19,15 +30,16 @@ export const PostItem: React.FC<PostItemProps> = ({ user, body }) => {
           <button>
             <FaRegHeart size={25} color="#ff5555" />
           </button>
-          <span>25 likes</span>
+          <span>{usersLikes.length} likes</span>
         </li>
         <li>
-          <button>
-            <FaCommentDots size={25} />
+          <button onClick={() => setShowComments(!showComments)}>
+            <FaRegComments size={25} />
           </button>
-          <span>3 comments</span>
+          <span>{comments.length} comments</span>
         </li>
       </ul>
+      {showComments && <CommentsList comments={comments} />}
     </div>
   );
 };
@@ -36,4 +48,6 @@ type PostItemProps = {
   user: { username: string };
   body: string;
   createdAt: string;
+  comments: Comment[];
+  usersLikes: string[];
 };

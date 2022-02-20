@@ -1,0 +1,67 @@
+@use 'vars' as *;
+
+.NewComment_container {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 80vh;
+}
+
+.NewComment {
+  position: relative;
+  width: 500px;
+  height: 330px;
+  padding: 50px 20px;
+  box-shadow: 0 0 2px 0px $pr_blue;
+  border-radius: 20px;
+  @media (max-width: 650px) {
+    width: 360px;
+    height: 380px;
+  }
+}
+
+.NewComment__back {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+}
+
+.NewComment__form {
+  width: 100%;
+  & > label {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  & > textarea {
+    padding: 8px 8px 8px 12px;
+    width: 100%;
+    height: 160px;
+    border-radius: 12px;
+    font-size: 16px;
+    border: 1px solid $pr_blue;
+    resize: none;
+    outline: none;
+    @media (max-width: 650px) {
+      height: 220px;
+    }
+  }
+  & > textarea:focus {
+    border: 2px solid $pr_blue;
+  }
+  & button:last-child {
+    display: block;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    width: 160px;
+    margin: 10px 10px 0 auto;
+    background: $pr_blue;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s linear;
+  }
+  & button:last-child:hover {
+    background: $sc_blue;
+  }
+}

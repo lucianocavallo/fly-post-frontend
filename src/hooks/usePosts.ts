@@ -8,7 +8,18 @@ const GET_POSTS = gql`
       user {
         id
         username
-        email
+      }
+      usersLikes {
+        id
+        username
+      }
+      comments {
+        id
+        comment
+        user {
+          id
+          username
+        }
       }
     }
   }

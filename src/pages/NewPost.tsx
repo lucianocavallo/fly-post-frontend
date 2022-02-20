@@ -10,7 +10,7 @@ export const NewPost: React.FC = () => {
           <FaArrowLeft size={18} color="black" />
         </Link>
         <form className="NewPost__form">
-          <label htmlFor="post">Your fly-post: </label>
+          <label htmlFor="post">Fly your post: </label>
           <textarea id="post" name="post" />
           <button>post it</button>
         </form>

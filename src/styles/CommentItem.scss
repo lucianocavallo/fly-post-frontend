@@ -1,0 +1,12 @@
+@use 'vars' as *;
+
+.CommentItem {
+  margin-bottom: 5px;
+  border-bottom: 1px dotted $tr_gray;
+  padding-bottom: 5px;
+  & h4 {
+    font-size: 16px;
+    color: $tr_gray;
+    margin-bottom: 5px;
+  }
+}

@@ -5,6 +5,7 @@ import { Context } from './context';
 import { Home } from './pages/Home';
 import { NotRegistered } from './pages/NotRegistered';
 import { NewPost } from './pages/NewPost';
+import { NewComment } from './pages/NewComment';
 
 import './styles/global.scss';
 
@@ -17,6 +18,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={isAuth ? <Home /> : <NotRegistered />} />
         <Route path="/new-post" element={<NewPost />} />
+        <Route path="/new-comment" element={<NewComment />} />
       </Routes>
     </BrowserRouter>
   );
