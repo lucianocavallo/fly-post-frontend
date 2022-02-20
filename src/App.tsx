@@ -4,6 +4,7 @@ import { Context } from './context';
 
 import { Home } from './pages/Home';
 import { NotRegistered } from './pages/NotRegistered';
+import { NewPost } from './pages/NewPost';
 
 import './styles/global.scss';
 
@@ -15,6 +16,7 @@ export const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={isAuth ? <Home /> : <NotRegistered />} />
+        <Route path="/new-post" element={<NewPost />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,6 +1,8 @@
 import logo from '../assets/logo.svg';
 import { FaHome, FaRegUser, FaFeather } from 'react-icons/fa';
 
+import { Link } from 'react-router-dom';
+
 import '../styles/MenuBar.scss';
 
 const size = 35;
@@ -26,10 +28,10 @@ export const MenuBar: React.FC = () => {
         </button>
       </li>
       <li>
-        <button className="MenuBar__NewPost">
+        <Link className="MenuBar__NewPost" to="/new-post">
           <span>Post</span>
           <FaFeather size={size} className="MenuBar__PostFeather" />
-        </button>
+        </Link>
       </li>
     </ul>
   );
