@@ -3,6 +3,7 @@ import {
   FormEventHandler,
   SetStateAction,
   useContext,
+  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -14,10 +15,12 @@ import logo from '../assets/logo.svg';
 
 import '../styles/FormModal.scss';
 import { Context } from '../context';
+import { useCreateUser } from '../hooks/useCreateUser';
 
 export const FormModal: React.FC<FormModalProps> = ({ modal, setModal }) => {
   const { addUser } = useContext(Context);
   const [loading, setLoading] = useState(false);
+  const { createUser, data } = useCreateUser();
   const form = useRef(null);
 
   const handleSubmit: FormEventHandler = async (e) => {
@@ -42,9 +45,25 @@ export const FormModal: React.FC<FormModalProps> = ({ modal, setModal }) => {
       }
     }
     if (modal === 'signup') {
-      alert(modal);
+      const formData = new FormData(form.current as unknown as HTMLFormElement);
+      const input = {
+        email: formData.get('email'),
+        password: formData.get('password'),
+        username: formData.get('username'),
+      };
+      createUser({ variables: { input } });
     }
   };
+
+  useEffect(() => {
+    if (data && form.current) {
+      //@ts-ignore
+      form.current.email.value = '';
+      //@ts-ignore
+      form.current.password.value = '';
+      setModal('login');
+    }
+  }, [data]);
 
   return (
     <div className="FormModal-container">

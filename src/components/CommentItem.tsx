@@ -22,7 +22,7 @@ export const CommentItem: React.FC<Comment> = ({ id, comment, user }) => {
 
         {isOwn && (
           <button onClick={handleRemoveComment}>
-            <FaTimes size={18} color="#fa2727" />
+            <FaTimes size={16} color="#fa2727" />
           </button>
         )}
       </div>
