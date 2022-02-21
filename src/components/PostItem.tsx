@@ -1,13 +1,14 @@
+import { useState } from 'react';
 import type { Comment } from './CommentItem';
 import { dateConverter } from '../utils/dateConverter';
 
-import { FaRegHeart, FaHeart, FaRegComments } from 'react-icons/fa';
+import { FaRegHeart, FaHeart, FaRegComments, FaTimes } from 'react-icons/fa';
 
 import { CommentsList } from './CommentsList';
+import { useToggleLike } from '../hooks/useToggleLike';
+import { useRemovePost } from '../hooks/useRemovePost';
 
 import '../styles/PostItem.scss';
-import { useState } from 'react';
-import { useToggleLike } from '../hooks/useToggleLike';
 
 export const PostItem: React.FC<PostItemProps> = ({
   id,
@@ -18,11 +19,18 @@ export const PostItem: React.FC<PostItemProps> = ({
   loggedUser,
 }) => {
   const { toggleLike } = useToggleLike();
+  const { removePost } = useRemovePost();
   const [showComments, setShowComments] = useState(false);
+
   const liked = usersLikes.some((user) => user.id === loggedUser.id);
+  const isOwn = user.id === loggedUser.id;
 
   const handleToggleLike = () => {
     toggleLike({ variables: { postId: id, userId: loggedUser.id } });
+  };
+
+  const handleRemovePost = () => {
+    removePost({ variables: { removePostId: id } });
   };
 
   return (
@@ -33,6 +41,11 @@ export const PostItem: React.FC<PostItemProps> = ({
       </div>
       <div className="PostItem__Body">
         <p>{body}</p>
+        {isOwn && (
+          <button onClick={handleRemovePost}>
+            <FaTimes size={18} color="#fa2727" />
+          </button>
+        )}
       </div>
       <ul className="PostItem__FavBar">
         <li>

@@ -35,5 +35,12 @@
 }
 
 .PostItem__Body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  & button:last-child {
+    // display: block;
+    margin: 0 5px 0 10px;
+  }
 }
