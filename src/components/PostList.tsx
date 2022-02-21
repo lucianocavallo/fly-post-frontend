@@ -8,12 +8,11 @@ import { usePosts } from '../hooks/usePosts';
 import '../styles/PostList.scss';
 
 export const PostList: React.FC = () => {
-  const { data, loading, error, refetch } = usePosts('10', '0');
+  const { data, loading, error } = usePosts('10', '0');
   const { user, addUser } = useContext(Context);
 
   return (
     <div className="PostList">
-      {/* <button onClick={() => refetch()}>refetch</button> */}
       <header className="PostList__header">
         <span>Home</span>
         <span>{user && user.username}</span>

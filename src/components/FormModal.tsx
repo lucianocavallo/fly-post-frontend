@@ -16,12 +16,14 @@ import logo from '../assets/logo.svg';
 import '../styles/FormModal.scss';
 import { Context } from '../context';
 import { useCreateUser } from '../hooks/useCreateUser';
+import { useNavigate } from 'react-router-dom';
 
 export const FormModal: React.FC<FormModalProps> = ({ modal, setModal }) => {
   const { addUser } = useContext(Context);
   const [loading, setLoading] = useState(false);
   const { createUser, data } = useCreateUser();
   const form = useRef(null);
+  const navigate = useNavigate();
 
   const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
@@ -42,6 +44,7 @@ export const FormModal: React.FC<FormModalProps> = ({ modal, setModal }) => {
       if (res.status === 200) {
         const data = await res.json();
         addUser(data);
+        navigate('/');
       }
     }
     if (modal === 'signup') {

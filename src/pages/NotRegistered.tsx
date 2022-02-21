@@ -3,20 +3,20 @@ import { FormModal } from '../components/FormModal';
 import logo from '../assets/logo.svg';
 
 import '../styles/NotRegistered.scss';
-// import { Context } from '../context';
+import { Context } from '../context';
 
 export const NotRegistered: React.FC = () => {
   const [showModal, setShowModal] = useState('');
-  // const { user, addUser } = useContext(Context);
+  const { user, addUser } = useContext(Context);
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     const user = JSON.parse(
-  //       window.localStorage.getItem('__token__') as string
-  //     );
-  //     addUser(user);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!user) {
+      const user = JSON.parse(
+        window.localStorage.getItem('__token__') as string
+      );
+      addUser(user);
+    }
+  }, []);
 
   return (
     <div className="NotRegistered">

@@ -16,16 +16,16 @@ export const MenuBar: React.FC = () => {
         </button>
       </li>
       <li>
-        <button>
+        <Link to="/">
           <FaHome size={size} />
           <span>Home</span>
-        </button>
+        </Link>
       </li>
       <li>
-        <button>
+        <Link to="/user">
           <FaRegUser size={size} />
           <span>My account</span>
-        </button>
+        </Link>
       </li>
       <li>
         <Link className="MenuBar__NewPost" to="/new-post">
