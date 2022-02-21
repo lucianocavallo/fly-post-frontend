@@ -9,11 +9,17 @@ const initialContext = {
 export const Context = createContext<ContextProps>(initialContext);
 
 export const ContextProvider: React.FC = ({ children }) => {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState<ContextUser | undefined>(undefined);
 
-  const addUser = () => {};
+  const addUser = (user: ContextUser) => {
+    setUser(user);
+    window.sessionStorage.setItem('__token__', JSON.stringify(user));
+  };
 
-  const removeUser = () => {};
+  const removeUser = () => {
+    setUser(undefined);
+    window.sessionStorage.setItem('__token__', '');
+  };
 
   return (
     <Context.Provider
@@ -29,14 +35,13 @@ export const ContextProvider: React.FC = ({ children }) => {
 };
 
 type ContextProps = {
-  user:
-    | {
-        id: string;
-        username: string;
-        token: string;
-        email: string;
-      }
-    | undefined;
-  addUser: () => void;
+  user: ContextUser | undefined;
+  addUser: (user: ContextUser) => void;
   removeUser: () => void;
+};
+
+type ContextUser = {
+  id: number;
+  token: string;
+  username: string;
 };

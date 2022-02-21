@@ -10,13 +10,13 @@ import { NewComment } from './pages/NewComment';
 import './styles/global.scss';
 
 export const App = () => {
-  const [isAuth, setIsAuth] = useState(true);
+  // const [isAuth, setIsAuth] = useState(false);
   const { user } = useContext(Context);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={isAuth ? <Home /> : <NotRegistered />} />
+        <Route path="/" element={user ? <Home /> : <NotRegistered />} />
         <Route path="/new-post" element={<NewPost />} />
         <Route path="/new-comment" element={<NewComment />} />
       </Routes>

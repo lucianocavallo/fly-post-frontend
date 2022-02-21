@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { Context } from '../context';
 import { PostItem } from './PostItem';
 
 import { Loading } from './Loading';
@@ -7,16 +9,13 @@ import '../styles/PostList.scss';
 
 export const PostList: React.FC = () => {
   const { data, loading, error, refetch } = usePosts('10', '0');
-
-  console.log('data: ', data);
-  console.log('loading: ', loading);
-  console.log('error: ', error);
+  const { user } = useContext(Context);
 
   return (
     <div className="PostList">
       <header className="PostList__header">
         <span>Home</span>
-        <span>luciano</span>
+        <span>{user && user.username}</span>
       </header>
       {loading && <Loading />}
       {data &&
