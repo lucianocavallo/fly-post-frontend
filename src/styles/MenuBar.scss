@@ -7,6 +7,12 @@
   align-items: center;
   width: 400px;
 
+  & > li {
+    margin-top: 30px;
+    width: 100%;
+    position: relative;
+  }
+
   & > li:nth-child(1) {
     margin-top: 20px;
   }
@@ -26,6 +32,16 @@
     border-radius: 50px;
     color: black;
   }
+  & > li:nth-child(2) > a[aria-current]::after,
+  & > li:nth-child(3) > a[aria-current]::after {
+    position: absolute;
+    bottom: -8px;
+    font-weight: bold;
+    font-size: 35px;
+    color: $pr_blue;
+    content: '·';
+  }
+
   & > li:nth-child(2) > button:hover,
   & > li:nth-child(3) > button:hover {
     background: $sc_gray;
@@ -40,11 +56,6 @@
     margin-left: 10px;
     display: inline;
     font-size: 18px;
-  }
-
-  & > li {
-    margin-top: 30px;
-    width: 100%;
   }
 
   @media (max-width: 1300px) {

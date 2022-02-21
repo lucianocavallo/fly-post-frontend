@@ -1,7 +1,7 @@
 import logo from '../assets/logo.svg';
 import { FaHome, FaRegUser, FaFeather } from 'react-icons/fa';
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import '../styles/MenuBar.scss';
 
@@ -16,16 +16,16 @@ export const MenuBar: React.FC = () => {
         </button>
       </li>
       <li>
-        <Link to="/">
+        <NavLink className="actual" to="/">
           <FaHome size={size} />
           <span>Home</span>
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/user">
+        <NavLink className="actual" to="/user">
           <FaRegUser size={size} />
           <span>My account</span>
-        </Link>
+        </NavLink>
       </li>
       <li>
         <Link className="MenuBar__NewPost" to="/new-post">
