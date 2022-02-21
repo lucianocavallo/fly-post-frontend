@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { NotRegistered } from './pages/NotRegistered';
 import { NewPost } from './pages/NewPost';
 import { User } from './pages/User';
+import { NotFound } from './pages/NotFound';
 
 import './styles/global.scss';
 
@@ -35,6 +36,7 @@ export const App = () => {
           path="/not-registered"
           element={user ? <Navigate to="/" /> : <NotRegistered />}
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

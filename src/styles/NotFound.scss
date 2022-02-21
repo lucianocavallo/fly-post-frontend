@@ -1,0 +1,22 @@
+@use 'vars' as *;
+
+.NotFound_container {
+  display: grid;
+  place-items: center;
+  min-height: 85vh;
+}
+
+.NotFound {
+  text-align: center;
+  color: $pr_blue;
+  & h2 {
+    font-size: 120px;
+  }
+  & h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  & h4 {
+    font-weight: 500;
+  }
+}
