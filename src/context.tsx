@@ -12,7 +12,11 @@ export const ContextProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<ContextUser | undefined>(undefined);
 
   const addUser = (user: ContextUser) => {
-    setUser(user);
+    const newUser = {
+      ...user,
+      id: String(user.id),
+    };
+    setUser(newUser);
     window.sessionStorage.setItem('__token__', JSON.stringify(user));
   };
 
@@ -41,7 +45,7 @@ type ContextProps = {
 };
 
 type ContextUser = {
-  id: number;
+  id: string;
   token: string;
   username: string;
 };

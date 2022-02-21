@@ -19,7 +19,9 @@ export const PostList: React.FC = () => {
       </header>
       {loading && <Loading />}
       {data &&
-        data.posts.map((post: any) => <PostItem {...post} key={post.id} />)}
+        data.posts.map((post: any) => (
+          <PostItem {...post} key={post.id} loggedUser={user} />
+        ))}
     </div>
   );
 };
