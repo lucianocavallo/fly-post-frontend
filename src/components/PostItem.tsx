@@ -65,7 +65,9 @@ export const PostItem: React.FC<PostItemProps> = ({
           <span>{comments.length} comments</span>
         </li>
       </ul>
-      {showComments && <CommentsList comments={comments} />}
+      {showComments && (
+        <CommentsList comments={comments} postId={id} userId={loggedUser.id} />
+      )}
     </div>
   );
 };

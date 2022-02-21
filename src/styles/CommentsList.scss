@@ -4,25 +4,6 @@
   position: relative;
   width: 90%;
   margin: 10px auto 0;
-  & > button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    // margin-left: auto;
-    border: 1px solid transparent;
-    transition: all 0.3s linear;
-    padding: 4px;
-    border-radius: 12px;
-  }
-  & > button:hover {
-    border: 1px solid $pr_blue;
-    color: $pr_blue;
-  }
-  & > button > span {
-    margin-right: 5px;
-  }
   & > div {
     padding-top: 15px;
   }
@@ -46,5 +27,33 @@
   }
   & > span {
     margin-right: 5px;
+  }
+}
+
+.CommentsList__form {
+  width: calc(100% - 130px);
+  & input {
+    width: 100%;
+    display: block;
+    height: 35px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    outline: none;
+    border-radius: 12px;
+    border: 1px solid $pr_blue;
+  }
+  & > button {
+    display: block;
+    margin-left: auto;
+    background: $pr_blue;
+    color: white;
+    padding: 5px 10px 7px;
+    font-weight: 500;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s linear;
+  }
+  & > button:hover {
+    background: $sc_blue;
   }
 }

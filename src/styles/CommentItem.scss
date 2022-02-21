@@ -9,4 +9,13 @@
     color: $tr_gray;
     margin-bottom: 5px;
   }
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  & > div > button {
+    margin: 0 10px;
+  }
 }
