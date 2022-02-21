@@ -17,12 +17,12 @@ export const ContextProvider: React.FC = ({ children }) => {
       id: String(user.id),
     };
     setUser(newUser);
-    window.sessionStorage.setItem('__token__', JSON.stringify(user));
+    window.localStorage.setItem('__token__', JSON.stringify(user));
   };
 
   const removeUser = () => {
     setUser(undefined);
-    window.sessionStorage.setItem('__token__', '');
+    window.localStorage.setItem('__token__', '');
   };
 
   return (

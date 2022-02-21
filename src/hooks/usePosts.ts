@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 
-const GET_POSTS = gql`
+export const GET_POSTS = gql`
   query Posts($limit: String, $offset: String) {
     posts(limit: $limit, offset: $offset) {
       id
@@ -35,7 +35,9 @@ export const usePosts = (limit?: string, offset?: string) => {
     });
     return { data, loading, error, refetch };
   } else {
-    const { data, loading, error, refetch } = useQuery(GET_POSTS);
+    const { data, loading, error, refetch } = useQuery(GET_POSTS, {
+      fetchPolicy: 'cache-and-network',
+    });
     return { data, loading, error, refetch };
   }
 };

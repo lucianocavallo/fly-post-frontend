@@ -17,7 +17,7 @@ export const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={user ? <Home /> : <NotRegistered />} />
-        <Route path="/new-post" element={<NewPost />} />
+        <Route path="/new-post" element={<NewPost user={user} />} />
         <Route path="/new-comment" element={<NewComment />} />
       </Routes>
     </BrowserRouter>
