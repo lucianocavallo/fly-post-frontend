@@ -11,9 +11,7 @@ const limit = '5';
 
 export const PostList: React.FC = () => {
   const { data, loading, error, fetchMore } = usePosts(limit, '0');
-  const { user, addUser } = useContext(Context);
-
-  data && console.log(data.posts.length);
+  const { user } = useContext(Context);
 
   const handleShowMore = () => {
     fetchMore({
