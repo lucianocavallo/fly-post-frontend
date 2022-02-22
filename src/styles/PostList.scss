@@ -32,3 +32,18 @@
     color: $tr_gray;
   }
 }
+
+.PostList__fetch_more {
+  display: block;
+  padding: 5px 10px;
+  margin: 10px auto 40px;
+  background: $pr_blue;
+  color: white;
+  border-radius: 16px;
+  transition: all 0.1s linear;
+}
+
+.PostList__fetch_more:hover {
+  background: $sc_blue;
+  transform: scale(1.1);
+}
