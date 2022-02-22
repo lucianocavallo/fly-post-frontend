@@ -9,6 +9,7 @@ import '../styles/User.scss';
 
 export const User: React.FC<UserProps> = ({ user, removeUser }) => {
   const userId = (user && user.id) as string;
+
   const { data, loading, error } = usePostsByUser(userId);
   const [showPosts, setShowPosts] = useState(false);
 
@@ -35,7 +36,7 @@ export const User: React.FC<UserProps> = ({ user, removeUser }) => {
         {loading && <Loading />}
         {data &&
           showPosts &&
-          data.posts.map((post: any) => (
+          data.postsById.map((post: any) => (
             <PostItem {...post} key={post.id} loggedUser={user} />
           ))}
       </div>

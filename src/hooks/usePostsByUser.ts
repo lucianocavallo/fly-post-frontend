@@ -1,8 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
 
 const GET_POSTS_BY_USER = gql`
-  query PostsByUser($userId: ID) {
-    posts(userId: $userId) {
+  query PostsById($userId: ID) {
+    postsById(userId: $userId) {
       id
       body
       comments {

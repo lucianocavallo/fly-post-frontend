@@ -9,14 +9,14 @@ export const NotRegistered: React.FC = () => {
   const [showModal, setShowModal] = useState('');
   const { user, addUser } = useContext(Context);
 
-  useEffect(() => {
-    if (!user) {
-      const user = JSON.parse(
-        window.localStorage.getItem('__token__') as string
-      );
-      addUser(user);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!user) {
+  //     const user = JSON.parse(
+  //       window.localStorage.getItem('__token__') as string
+  //     );
+  //     addUser(user);
+  //   }
+  // }, []);
 
   return (
     <div className="NotRegistered">

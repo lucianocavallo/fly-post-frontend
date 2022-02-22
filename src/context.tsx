@@ -44,7 +44,7 @@ type ContextProps = {
   removeUser: () => void;
 };
 
-type ContextUser = {
+export type ContextUser = {
   id: string;
   token: string;
   username: string;
