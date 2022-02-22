@@ -19,11 +19,3 @@ export const useCreateComment = () => {
 
   return { createComment, data, loading, error };
 };
-
-// {
-//   "input": {
-//     "comment": "Genial!!!",
-//     "userId": "1",
-//     "postId": "4"
-//   }
-// }

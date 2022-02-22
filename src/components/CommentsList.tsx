@@ -3,7 +3,9 @@ import { FaRegCommentDots } from 'react-icons/fa';
 
 import { CommentItem } from './CommentItem';
 import type { Comment } from './CommentItem';
+import { Error } from './Error';
 import { useCreateComment } from '../hooks/useCreateComment';
+import { createCommentSchema } from '../utils/yupSchemas';
 
 import '../styles/CommentsList.scss';
 
@@ -12,6 +14,7 @@ export const CommentsList: React.FC<CommentsListProps> = ({
   postId,
   userId,
 }) => {
+  const [error, setError] = useState('');
   const form = useRef(null);
   const { createComment } = useCreateComment();
   const [showNewComment, setShowNewComment] = useState(false);
@@ -20,15 +23,25 @@ export const CommentsList: React.FC<CommentsListProps> = ({
     e.preventDefault();
     const formData = new FormData(form.current as unknown as HTMLFormElement);
     const comment = formData.get('comment');
-    createComment({
-      variables: {
-        input: {
-          comment,
-          userId,
-          postId,
-        },
-      },
-    });
+
+    createCommentSchema
+      .validate({ comment })
+      .then(() => {
+        createComment({
+          variables: {
+            input: {
+              comment,
+              userId,
+              postId,
+            },
+          },
+        });
+      })
+      .catch((e) => setError(e.message));
+  };
+
+  const handleOnChange = () => {
+    if (error) setError('');
   };
 
   return (
@@ -47,7 +60,9 @@ export const CommentsList: React.FC<CommentsListProps> = ({
             id="comment"
             name="comment"
             placeholder="your comment here..."
+            onChange={handleOnChange}
           />
+          {error && <Error error={error} />}
           <button>comment</button>
         </form>
       )}
@@ -65,36 +80,3 @@ type CommentsListProps = {
   postId: string;
   userId: string;
 };
-
-// update: (cache, { data: createComment }) => {
-//   cache.modify({
-//     fields: {
-//       posts(existingPosts = [], { readField }) {
-//         console.log(existingPosts);
-//         console.log({ createComment });
-//         const existingPostsCopy = [...existingPosts];
-
-//         const index = existingPosts.findIndex(
-//           (post: any) => readField('id', post) === postId
-//         );
-
-//         const post = existingPosts[index];
-//         let comments = readField('comments', post) as string[];
-//         comments = [...comments, createComment];
-//         const updatedPost = { ...post };
-//         updatedPost.comments = comments;
-//         existingPostsCopy[index] = updatedPost;
-//         console.log({ post });
-//         console.log({ comments });
-//         console.log({ updatedPost });
-//         console.log({ existingPostsCopy });
-
-//         // const newPost = cache.writeQuery({
-//         //   data: createPost,
-//         //   query: CREATE_POST,
-//         // });
-//         return [...existingPostsCopy];
-//       },
-//     },
-//   });
-// },

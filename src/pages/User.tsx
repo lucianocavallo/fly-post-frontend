@@ -19,7 +19,6 @@ export const User: React.FC<UserProps> = ({ user, removeUser }) => {
       <div className="User">
         <header className="User__header">
           <span>User</span>
-
           <span>{user && user.username}</span>
         </header>
         <div className="User__info">

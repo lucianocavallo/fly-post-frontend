@@ -1,8 +1,10 @@
-import '../styles/CommentItem.scss';
-import { FaTimes } from 'react-icons/fa';
 import { useContext } from 'react';
+import { FaTimes } from 'react-icons/fa';
+
 import { Context } from '../context';
 import { useRemoveComment } from '../hooks/useRemoveComment';
+
+import '../styles/CommentItem.scss';
 
 export const CommentItem: React.FC<Comment> = ({ id, comment, user }) => {
   const loggedUser = useContext(Context).user;

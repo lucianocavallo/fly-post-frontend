@@ -26,17 +26,9 @@ export const GET_POSTS = gql`
 `;
 
 export const usePosts = (limit?: string, offset?: string) => {
-  // if (limit && offset) {
   const { data, loading, error, refetch, fetchMore } = useQuery(GET_POSTS, {
     fetchPolicy: 'cache-and-network',
     variables: { limit, offset },
   });
   return { data, loading, error, refetch, fetchMore };
-  // }
-  // else {
-  //   const { data, loading, error, refetch, fetchMore } = useQuery(GET_POSTS, {
-  //     fetchPolicy: 'cache-and-network',
-  //   });
-  //   return { data, loading, error, refetch, fetchMore };
-  // }
 };

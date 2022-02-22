@@ -7,20 +7,23 @@ import {
   useRef,
   useState,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import { config } from '../config';
 
-import { Loading } from './Loading';
 import logo from '../assets/logo.svg';
-
-import '../styles/FormModal.scss';
+import { Loading } from './Loading';
+import { Error } from './Error';
 import { Context } from '../context';
 import { useCreateUser } from '../hooks/useCreateUser';
-import { useNavigate } from 'react-router-dom';
+import { loginSchema, signupSchema } from '../utils/yupSchemas';
+
+import '../styles/FormModal.scss';
 
 export const FormModal: React.FC<FormModalProps> = ({ modal, setModal }) => {
-  const { addUser } = useContext(Context);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const { addUser } = useContext(Context);
   const { createUser, data } = useCreateUser();
   const form = useRef(null);
   const navigate = useNavigate();
@@ -29,23 +32,30 @@ export const FormModal: React.FC<FormModalProps> = ({ modal, setModal }) => {
     e.preventDefault();
     if (modal === 'login') {
       const formData = new FormData(form.current as unknown as HTMLFormElement);
-      const reqBody = {
+      const loginBody = {
         email: formData.get('email'),
         password: formData.get('password'),
       };
-      const res = await fetch(`${config.apiUrl}/api/login`, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(reqBody),
-      });
-      if (res.status === 200) {
-        const data = await res.json();
-        addUser(data);
-        navigate('/');
-      }
+      loginSchema
+        .validate(loginBody)
+        .then(async () => {
+          setLoading(true);
+          const res = await fetch(`${config.apiUrl}/api/login`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginBody),
+          });
+          if (res.status === 200) {
+            setLoading(false);
+            const data = await res.json();
+            addUser(data);
+            navigate('/');
+          }
+        })
+        .catch((e) => setError(e.message));
     }
     if (modal === 'signup') {
       const formData = new FormData(form.current as unknown as HTMLFormElement);
@@ -54,7 +64,10 @@ export const FormModal: React.FC<FormModalProps> = ({ modal, setModal }) => {
         password: formData.get('password'),
         username: formData.get('username'),
       };
-      createUser({ variables: { input } });
+      signupSchema
+        .validate(input)
+        .then(() => createUser({ variables: { input } }))
+        .catch((e) => setError(e.message));
     }
   };
 
@@ -68,6 +81,11 @@ export const FormModal: React.FC<FormModalProps> = ({ modal, setModal }) => {
     }
   }, [data]);
 
+  const handleOnChange = () => {
+    if (error) setError('');
+    if (loading) setLoading(false);
+  };
+
   return (
     <div className="FormModal-container">
       <div className="FormModal">
@@ -79,14 +97,33 @@ export const FormModal: React.FC<FormModalProps> = ({ modal, setModal }) => {
           {modal === 'signup' && (
             <>
               <label htmlFor="username">Username: </label>
-              <input required type="text" id="username" name="username" />
+              <input
+                required
+                type="text"
+                id="username"
+                name="username"
+                onChange={handleOnChange}
+              />
             </>
           )}
           <label htmlFor="email">Email: </label>
-          <input required type="text" id="email" name="email" />
+          <input
+            required
+            type="text"
+            id="email"
+            name="email"
+            onChange={handleOnChange}
+          />
           <label htmlFor="password">Password: </label>
-          <input required type="password" id="password" name="password" />
+          <input
+            required
+            type="password"
+            id="password"
+            name="password"
+            onChange={handleOnChange}
+          />
           {loading && <Loading />}
+          {error && <Error error={error} />}
           <button>{modal}</button>
         </form>
       </div>
